@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ user.username }}님의 페이지</h1>
+<h3>장바구니</h3>
+{% for product in user.cart.all %}
+<img src="{{ product.image }}" alt="" style='height:10rem'>
+<p>{{ forloop.counter }} : {{ product.title }}</p>
+<a href="{% url "shop:addcart" product.pk %}"><button>삭제하기</button></a>
+<hr>
+{% endfor %}
+{% endblock content %}
